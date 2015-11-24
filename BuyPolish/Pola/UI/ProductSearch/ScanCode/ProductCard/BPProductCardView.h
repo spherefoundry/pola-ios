@@ -4,7 +4,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BPCardViewProtocol.h"
+#import "BPStackView.h"
 
 @class BPProductCardView;
 @class BPMainProggressView;
@@ -17,11 +17,11 @@
 
 @end
 
-@interface BPProductCardView : UIView <BPCardViewProtocol>
+@interface BPProductCardView : UIView <BPStackViewCardProtocol>
 
 @property(nonatomic) BOOL inProgress;
 
-@property(nonatomic) int titleHeight;
+@property(nonatomic) CGFloat titleHeight;
 
 @property(nonatomic, weak) id <BPProductCardViewDelegate> delegate;
 

@@ -42,6 +42,8 @@ int const CARD_REPORT_BUTTON_HEIGHT = 30;
 
         self.layer.cornerRadius = 8.0f;
         self.layer.masksToBounds = NO;
+        self.layer.shadowRadius = 2.f;
+        self.layer.shadowOpacity = 0.3f;
 
         _loadingProgressView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         [_loadingProgressView sizeToFit];
@@ -115,7 +117,7 @@ int const CARD_REPORT_BUTTON_HEIGHT = 30;
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-    const int verticalTitleSpace = self.titleHeight - CARD_PROGRESS_IN_HEADER;
+    const int verticalTitleSpace = (int)floorf(self.titleHeight) - CARD_PROGRESS_IN_HEADER;
     const int widthWithPadding = (const int) (CGRectGetWidth(self.bounds) - 2 * CARD_PADDING);
 
     CGRect rect = self.titleLabel.frame;
@@ -271,16 +273,5 @@ int const CARD_REPORT_BUTTON_HEIGHT = 30;
 
     [self setNeedsLayout];
 }
-
-- (void)setSmallCardState:(BOOL)smallCardEnabled {
-    if(smallCardEnabled) {
-        self.layer.shadowRadius = 2.f;
-        self.layer.shadowOpacity = 0.3f;
-    } else {
-        self.layer.shadowRadius = 0.f;
-        self.layer.shadowOpacity = 0.f;
-    }
-}
-
 
 @end
